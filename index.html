@@ -16,7 +16,7 @@ overflow-x:hidden;
 scroll-behavior:smooth;
 }
 
-/* ================= INTRO PAGE ================= */
+/* INTRO */
 #intro{
 height:100vh;
 display:flex;
@@ -51,22 +51,7 @@ animation:pulse 1.5s infinite;
 100%{transform:scale(1);}
 }
 
-/* Star burst */
-.star{
-position:absolute;
-width:6px;
-height:6px;
-background:gold;
-border-radius:50%;
-animation:explode 0.8s forwards;
-}
-
-@keyframes explode{
-0%{opacity:1;transform:translate(0,0);}
-100%{opacity:0;transform:translate(var(--x),var(--y));}
-}
-
-/* ================= FLOWERS ================= */
+/* FLOWERS */
 .flower{
 position:fixed;
 top:-10px;
@@ -84,9 +69,9 @@ opacity:0.7;
 100%{transform:translateY(110vh) rotate(360deg);}
 }
 
-/* ================= MAIN SITE ================= */
+/* SECTIONS */
 section{
-padding:80px 20px;
+padding:100px 20px;
 text-align:center;
 position:relative;
 z-index:2;
@@ -98,7 +83,7 @@ font-size:50px;
 color:#ff4da6;
 }
 
-/* Story Cards */
+/* STORY */
 .story-card{
 margin:60px auto;
 max-width:400px;
@@ -118,7 +103,7 @@ width:100%;
 border-radius:15px;
 }
 
-/* Polaroids */
+/* MEMORIES */
 .memory-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -130,12 +115,11 @@ margin-top:40px;
 background:white;
 padding:10px 10px 30px;
 box-shadow:0 10px 25px rgba(0,0,0,0.15);
-transform:rotate(-2deg);
 transition:0.4s;
 }
 
 .polaroid:hover{
-transform:rotate(0deg) scale(1.05);
+transform:scale(1.05);
 }
 
 .polaroid img{
@@ -147,12 +131,66 @@ margin-top:10px;
 font-size:15px;
 }
 
-.polaroid small{
-color:#888;
-font-size:13px;
+/* OPEN WHEN */
+.envelope-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+max-width:1000px;
+margin:auto;
+margin-top:50px;
 }
 
-/* Button */
+.envelope{
+background:white;
+padding:40px 20px;
+border-radius:12px;
+box-shadow:0 15px 40px rgba(0,0,0,0.1);
+cursor:pointer;
+transition:0.4s;
+border:6px solid #f2d6d6;
+}
+
+.envelope:hover{
+transform:translateY(-10px);
+}
+
+.envelope h3{
+font-family:'Playfair Display',serif;
+font-size:28px;
+color:#3b1b1b;
+}
+
+.modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:2000;
+}
+
+.modal-content{
+background:#fff;
+padding:50px 40px;
+border-radius:15px;
+max-width:600px;
+width:90%;
+position:relative;
+}
+
+.close-btn{
+position:absolute;
+top:15px;
+right:20px;
+font-size:22px;
+cursor:pointer;
+}
+
 button{
 padding:15px 35px;
 border:none;
@@ -161,10 +199,10 @@ background:linear-gradient(90deg,#ff4da6,#ff80bf);
 color:white;
 font-size:18px;
 cursor:pointer;
-margin-top:30px;
+margin-top:20px;
 }
 
-/* Letter */
+/* LETTER */
 #letter{
 white-space:pre-wrap;
 max-width:700px;
@@ -179,30 +217,20 @@ min-height:200px;
 
 <body>
 
-<!-- 🎵 BACKGROUND MUSIC -->
+<!-- MUSIC -->
 <audio id="bgMusic" loop>
 <source src="love.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ================= INTRO ================= -->
+<!-- INTRO -->
 <div id="intro">
-
-<p style="font-size:22px; letter-spacing:1px; color:#555; margin-bottom:10px;">
-I’ve been carrying this in my heart for so long.
-</p>
-
+<p style="font-size:22px;color:#555;">I’ve been carrying this in my heart for so long.</p>
 <h1>Shamika</h1>
-
-<p style="font-size:20px; max-width:600px; color:#666; line-height:1.6;">
-Every moment since you walked into my life,<br>
-the universe feels a little more magical.
-</p>
-
+<p style="font-size:20px;color:#666;">Every moment since you walked into my life,<br>the universe feels magical.</p>
 <div id="bigHeart">❤️</div>
-
 </div>
 
-<!-- ================= FLOWERS ================= -->
+<!-- FLOWERS SCRIPT -->
 <script>
 for(let i=0;i<25;i++){
 let flower=document.createElement("div");
@@ -213,94 +241,74 @@ document.body.appendChild(flower);
 }
 </script>
 
-<!-- ================= OUR STORY ================= -->
+<!-- STORY -->
 <section>
 <h1>Our Story</h1>
-
 <div class="story-card">
 <img src="first-glance.jpg">
 <h3>The First Glance</h3>
 <p>From the moment our eyes met, something shifted.</p>
 </div>
-
 <div class="story-card">
 <img src="falling-deeper.jpg">
 <h3>Falling Deeper</h3>
-<p>Every laugh, every conversation brought us closer.</p>
+<p>Every laugh brought us closer.</p>
 </div>
-
 <div class="story-card">
 <img src="growing-closer.jpg">
 <h3>Growing Closer</h3>
-<p>And somewhere along the way, you became my favorite person.</p>
+<p>You became my favorite person.</p>
 </div>
 </section>
 
-<!-- ================= MEMORIES ================= -->
+<!-- MEMORIES -->
 <section>
 <h1>Memories</h1>
-
 <div class="memory-grid">
-
-<div class="polaroid">
-<img src="memory1.jpg">
-<p><strong>First Date</strong><br><small>21 December 2025</small></p>
-</div>
-
-<div class="polaroid">
-<img src="memory2.jpg">
-<p><strong>1st Alone VC</strong><br><small>11 October 2025</small></p>
-</div>
-
-<div class="polaroid">
-<img src="memory3.jpg">
-<p><strong>Mini Date</strong><br><small>5 February 2026</small></p>
-</div>
-
-<div class="polaroid">
-<img src="memory4.jpg">
-<p><strong>The Way You Smile</strong><br><small>Always</small></p>
-</div>
-
-<div class="polaroid">
-<img src="memory5.jpg">
-<p><strong>Never Letting You Go</strong><br><small>Forever</small></p>
-</div>
-
-<div class="polaroid">
-<img src="memory6.jpg">
-<p><strong>Beautiful Moments</strong><br><small>19 October 2025</small></p>
-</div>
-
+<div class="polaroid"><img src="memory1.jpg"><p><strong>First Date</strong><br>21 December 2025</p></div>
+<div class="polaroid"><img src="memory2.jpg"><p><strong>1st Alone VC</strong><br>11 October 2025</p></div>
+<div class="polaroid"><img src="memory3.jpg"><p><strong>Mini Date</strong><br>5 February 2026</p></div>
+<div class="polaroid"><img src="memory4.jpg"><p><strong>The Way You Smile</strong><br>Always</p></div>
+<div class="polaroid"><img src="memory5.jpg"><p><strong>Never Letting You Go</strong><br>Forever</p></div>
+<div class="polaroid"><img src="memory6.jpg"><p><strong>Beautiful Moments</strong><br>19 October 2025</p></div>
 </div>
 </section>
 
-<!-- ================= SURPRISE ================= -->
+<!-- OPEN WHEN -->
+<section>
+<h1>Open When...</h1>
+<p>Little reminders of my love for every mood</p>
+<div class="envelope-grid">
+<div class="envelope" onclick="openLetter('happy')"><h3>You're Happy</h3></div>
+<div class="envelope" onclick="openLetter('sad')"><h3>You're Sad</h3></div>
+<div class="envelope" onclick="openLetter('sleep')"><h3>You Can't Sleep</h3></div>
+<div class="envelope" onclick="openLetter('miss')"><h3>You Miss Me</h3></div>
+</div>
+</section>
+
+<div id="letterModal" class="modal">
+<div class="modal-content">
+<span class="close-btn" onclick="closeModal()">✕</span>
+<h2>My Dearest,</h2>
+<h3 id="modalTitle"></h3>
+<p id="modalText"></p>
+<p style="margin-top:30px;">With all my love,<br>Your Rick ❤️</p>
+</div>
+</div>
+
+<!-- SURPRISE -->
 <section>
 <h1>Surprise</h1>
-<p>You’re the best gift I could ever get.</p>
 <button onclick="reveal()">One Last Thing ❤️</button>
 <div id="letter"></div>
 </section>
 
-<!-- ================= SCRIPT ================= -->
 <script>
+const heart=document.getElementById("bigHeart");
+const music=document.getElementById("bgMusic");
 
-document.getElementById("bigHeart").addEventListener("click",function(e){
-
-// 🎵 PLAY MUSIC
-document.getElementById("bgMusic").play();
-
-for(let i=0;i<40;i++){
-let star=document.createElement("div");
-star.className="star";
-star.style.left=e.clientX+"px";
-star.style.top=e.clientY+"px";
-star.style.setProperty("--x",(Math.random()*300-150)+"px");
-star.style.setProperty("--y",(Math.random()*300-150)+"px");
-document.body.appendChild(star);
-setTimeout(()=>star.remove(),800);
-}
+heart.addEventListener("click",function(){
+music.play();
 
 setTimeout(()=>{
 document.getElementById("intro").style.opacity="0";
@@ -308,27 +316,29 @@ setTimeout(()=>{
 document.getElementById("intro").style.display="none";
 },1000);
 },500);
-
 });
 
+function openLetter(type){
+let title="";
+let text="";
+if(type==="happy"){title="Open when you're happy";text="Yay! I'm so happy that you're happy! Keep smiling, it looks beautiful on you. 😊";}
+if(type==="sad"){title="Open when you're sad";text="It's okay to be sad sometimes. I'm here for you. Take a deep breath. You are strong and loved. ❤️";}
+if(type==="sleep"){title="Open when you can't sleep";text="Count our memories instead of sheep. Sweet dreams my love. 🌙";}
+if(type==="miss"){title="Open when you miss me";text="Close your eyes and feel my hug. I love you! ❤️";}
+document.getElementById("modalTitle").innerText=title;
+document.getElementById("modalText").innerText=text;
+document.getElementById("letterModal").style.display="flex";
+}
+
+function closeModal(){
+document.getElementById("letterModal").style.display="none";
+}
+
 function reveal(){
-let text=`My Love,
-I don’t even know where to begin, because loving you has slowly become the most natural thing in my life.
-On Valentine’s Day, people talk about big gestures and perfect words. But what I feel for you isn’t loud... it’s steady.
-It’s in the quiet moments.
-It’s in the way I think of you first when something good happens.
-It’s in the way I want to protect your peace, support your dreams, and stand beside you while you build your life.
-You’ve brought warmth into my world.
-Not just excitement... but comfort.
-Not just attraction... but connection.
-I promise to love you in a way that feels safe.
-I promise to grow, not just for us, but for myself too.
-You are not just my Valentine today.
-You are my calm, my joy, and the person I choose today, tomorrow, and for as long as life lets me.
-Happy Valentine’s Day 💕`;
+const text=`My Love...I dont even know where to begin, because loving you has slowly become the most natural thing in my life...On Valentines Day, people talk about big gestures and perfect words. But what I feel for you isnt loud....its steady. Its in the quiet moments. Its in the way I think of you first when something good happens. It’s in the way I want to protect your peace, support your dreams, and stand beside you while you build your life...You’ve brought a kind of warmth into my world that I didn’t even know I needed. Not just excitement....but comfort. Not just attraction.....but connection.I promise to love you in a way that feels safe.I promise to grow, not just for us, but for myself too...You are not just my Valentine today....You are my calm, my joy, and the person I choose today, tomorrow, and for as long as life lets me...Happy Valentines Day Shamika💕 I love you!🥰💓`;
 
 let i=0;
-let speed=30;
+let speed=40;
 let letter=document.getElementById("letter");
 letter.innerHTML="";
 
