@@ -251,10 +251,58 @@ line-height:1.7;
 color:#444;
 min-height:200px;
 }
+/* PASSWORD SCREEN */
+
+#passwordScreen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+background:rgba(255,240,245,0.95);
+backdrop-filter:blur(10px);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:5000;
+transition:opacity 1s ease;
+}
+
+.lock-icon{
+font-size:60px;
+margin-bottom:20px;
+animation:pulse 1.5s infinite;
+}
+
+#passwordInput{
+padding:12px 20px;
+border-radius:30px;
+border:none;
+outline:none;
+font-size:16px;
+margin-bottom:15px;
+}
+
+#unlockBtn{
+padding:10px 25px;
+border:none;
+border-radius:30px;
+background:linear-gradient(90deg,#ff4da6,#ff80bf);
+color:white;
+cursor:pointer;
+}
 </style>
 </head>
 
 <body>
+
+<div id="passwordScreen">
+   <div class="lock-icon">🔒</div>
+   <h2>Enter Password</h2>
+   <input type="password" id="passwordInput" placeholder="Our Secret ❤️">
+   <button id="unlockBtn" onclick="checkPassword()">Unlock</button>
+</div>
 
 <audio id="bgMusic" loop>
 <source src="love.mp3" type="audio/mpeg">
@@ -446,6 +494,25 @@ document.getElementById("letterModal").style.display="flex";
 
 function closeModal(){
 document.getElementById("letterModal").style.display="none";
+}
+
+function checkPassword(){
+
+    const correctPassword = "forever";
+    const userPassword = document.getElementById("passwordInput").value;
+    const screen = document.getElementById("passwordScreen");
+
+    if(userPassword === correctPassword){
+
+        screen.style.opacity = "0";
+
+        setTimeout(function(){
+            screen.style.display = "none";
+        }, 800);
+
+    } else {
+        alert("Wrong password ❤️");
+    }
 }
 
 function reveal(){
